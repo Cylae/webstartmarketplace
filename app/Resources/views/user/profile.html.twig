@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <div class="row justify-content-center mb-4">
+        <div class="col-sm-12">
+            <h4>Your Offers</h4>
+        </div>
+    </div>
+    <div class="row">
+        {% for offer in user.offers %}
+            <div class="col-sm-4">
+                <div class="card">
+                    <h5 class="card-header">{{ offer.title }}</h5>
+                    <div class="card-body">
+                        <img class="card-img-top" src="{{asset('uploads/images/' ~ offer.offerImg) }}">
+                        <h6 class="card-subtitle mb-2 text-muted">{{ offer.zipcode }} <em class="float-right">{{offer.createdAt|date('d/m/Y')}}</em></h6>
+                        <p class="card-text">
+                            {{ offer.description }}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

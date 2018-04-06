@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+
+    <div class="row justify-content-center">
+        <div class="col-sm-6">
+            <div class="card">
+                <h4 class="card-header">Please sign in</h4>
+                <div class="card-body">
+                    {% if error %}
+                        <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                    {% endif %}
+                    <form action="{{ path('login') }}" method="post">
+                        <div class="form-group">
+                            <label for="username">Username:</label>
+                            <input type="text" class="form-control" id="username" name="_username" value="{{ last_username }}"/>
+                            <small id="emailHelp" class="form-text text-muted">The username you choose when you registered</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password:</label>
+                            <input type="password" class="form-control" id="password" name="_password"/>
+                        </div>
+                        <button type="submit" class="btn btn-primary">login</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
